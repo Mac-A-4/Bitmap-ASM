@@ -6,6 +6,8 @@
 	.global FileSeek
 	.global FileSeekStart
 	.global FileSeekEnd
+	.global FileSeekLocation
+	.global FileSize
 
 	.equ SYS_OPEN, 2
 	.equ SYS_CLOSE, 3
@@ -64,3 +66,27 @@ FileSeekEnd:
 	call FileSeekExplicit
 	ret
 
+FileSeekLocation:
+	xorq %rsi, %rsi
+	call FileSeek
+	ret
+
+FileSize:
+	push %r12
+	push %r13
+	push $r14
+	movq %rdi, %r12
+	call FileSeekLocation
+	movq %rax, %r13
+	movq %r12, %rdi
+	xorq %rsi, %rsi
+	call FileSeekEnd
+	movq %rax, %r14
+	movq %r12, %rdi
+	movq %r13, %rsi
+	call FileSeekStart
+	movq %r14, %rax
+	pop %r14
+	pop %r13
+	pop %r12
+	ret

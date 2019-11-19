@@ -172,4 +172,3 @@ BitmapSetPixel:
 	pop %rcx
 	movl %ecx, (%rax)
 	ret
-
