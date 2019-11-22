@@ -74,7 +74,7 @@ FileSeekLocation:
 FileSize:
 	push %r12
 	push %r13
-	push $r14
+	push %r14
 	movq %rdi, %r12
 	call FileSeekLocation
 	movq %rax, %r13

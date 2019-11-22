@@ -10,6 +10,7 @@
 	.equ BitmapRenderFunction_Width, -24
 	.equ BitmapRenderFunction_Height, -32
 	.equ BitmapRenderFunction_Index, -40
+	.equ BitmapRenderFunction_Last, -48 
 
 BitmapRenderFunction:
 	enter $64, $0
